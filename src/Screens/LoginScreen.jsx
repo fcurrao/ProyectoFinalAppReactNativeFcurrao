@@ -38,7 +38,7 @@ const LoginScreen = ({ navigation }) => {
         if (!isCorrectPassword) setErrorPassword ('Password must be at least 6 characters')
         else setErrorPassword('')
     };
-
+ 
     useEffect(()=> {
         (async ()=> {
             try {
