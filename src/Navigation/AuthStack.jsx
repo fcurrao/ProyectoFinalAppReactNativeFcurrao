@@ -16,7 +16,7 @@ const AuthStack = () => {
                 header: () => {
                     return <Header route={route} navigation={navigation} />;
                 },
-            })}
+            })} 
         >
             <Stack.Screen name="Signup" component={SignupScreen} />
             <Stack.Screen name="Login" component={LoginScreen} />
