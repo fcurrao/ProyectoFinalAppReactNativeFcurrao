@@ -43,6 +43,10 @@ const ItemDetail = ({
           ...product,
           quantity: 1
       }))
+      alert("Producto agregado")
+      
+     
+
   }
 
   return (

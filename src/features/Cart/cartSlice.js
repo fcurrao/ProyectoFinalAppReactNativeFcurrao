@@ -37,7 +37,12 @@ export const cartSlice = createSlice({
             state.value.updatedAt = new Date().toLocaleString()
         },
         removeCartItem: (state,action) => {
+            state.value = {user: "Hardcoder user",
+            updatedAt: "",
+            total: null,
+            items: []}
             //Logic to remove item
+         
         }
     }
 })
@@ -45,3 +50,5 @@ export const cartSlice = createSlice({
 export const {addCartItem, removeCartItem} = cartSlice.actions
 
 export default cartSlice.reducer
+
+

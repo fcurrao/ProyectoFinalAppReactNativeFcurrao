@@ -3,13 +3,21 @@ import React from 'react'
 import CartItem from '../Components/CartItem';
 import { useSelector } from 'react-redux';
 import { usePostCartMutation } from '../Services/shopServices';
+import Home from './Home';
+import { useDispatch } from "react-redux";
+import { removeCartItem } from "../features/Cart/cartSlice";
+
 
 const Cart = () => {
     const {items: CartData, total, updatedAt, user} = useSelector(state => state.cartReducer.value)
     const [triggerPostCart, result] = usePostCartMutation()
 
+    const dispatch = useDispatch()
+
     const onConfirm = () => {
         triggerPostCart({items: CartData, total, user, updatedAt})
+        alert("ORDEN CONFIRMADA- GRACIAS POR COMPRAR") 
+        dispatch(removeCartItem({ })) 
     }
 
     console.log(result);
