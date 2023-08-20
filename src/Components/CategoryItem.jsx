@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
         fontSize: 18
     },
     additionalStyle: {
-      borderRadius: 15
+      borderRadius: 15,
+    height: '120px !important'
     }
 })
 

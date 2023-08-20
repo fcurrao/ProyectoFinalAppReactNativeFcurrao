@@ -1,10 +1,10 @@
-import { FlatList, StyleSheet, Text, Platform, View, useWindowDimensions } from 'react-native'
+import { FlatList, StyleSheet, Text, Image, Platform, View, useWindowDimensions } from 'react-native'
 import React from 'react'
 import { colors } from '../Global/Colors'
 // import categories from '../Data/categories.json'
 import { useGetCategoriesQuery } from '../Services/shopServices'
-import CategoryItem from '../Components/CategoryItem'
-import Counter from '../Components/Counter'
+import CategoryItem from '../Components/CategoryItem' 
+import Counter from '../Components/Counter' 
 
 const Home = ({
     // setCategorySelected
@@ -16,14 +16,17 @@ const Home = ({
   console.log ( "tu plataforma es:",  Platform.OS )
   const {data: categories, isLoading, isError} = useGetCategoriesQuery()
 
+   
+
   console.log("cat",categories);
   console.log("loading",isLoading);
   console.log("err",isError);
   
   return (
     <View style={styles.container}>
-        <Counter/>
-        <FlatList
+        {/* <Counter/> */}
+        <Text>BIENVENIDO A ECOMERCE</Text>
+      <FlatList
            data = {categories}
            keyExtractor={category => category}
            renderItem={({item}) => <CategoryItem item={item} navigation = {navigation}/>}
@@ -32,7 +35,13 @@ const Home = ({
            contentContainerStyle={styles.wrapper}
            horizontal={true}
            style={styles.flatlist}
-        />
+        /> 
+        <Image
+        // resizeMode='cover'
+        style={styles.image}
+        source={{ uri: 'https://mecaluxes.cdnwm.com/blog/img/almacen-transito-leroy-merlin-guadalajara-bricolaje-jardineria.1.0.jpg' }}
+      /> 
+             
     </View>
   )
 }
@@ -41,13 +50,22 @@ export default Home
 
 const styles = StyleSheet.create({
     wrapper: {
-        gap: 20,
+        gap: 20, 
       },
       container: {
           backgroundColor: colors.lightPink,
           alignItems: 'center',
+          height:'100%'
       },
       flatlist: {
-        width: '80%'
-      }
+        width: '80%', 
+      },  
+      image: { 
+        height: '60%',
+        width: '85%',
+        marginBottom: '5%',
+        minWidth: 150,
+        maxWidth: 250,
+        borderRadius: 8
+      },
 })

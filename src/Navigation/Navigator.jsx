@@ -31,8 +31,10 @@ import { setUser } from "../features/User/userSlice";
 const Tab = createBottomTabNavigator();
 
 const Navigator = () => {
-    const { email, localId } = useSelector((state) => state.userReducer.value);
+    // const { email, localId } = useSelector((state) => state.userReducer.value); 
+    const  email = "f@f.com";  // testeando TDD
     
+
     const dispatch = useDispatch()
 
     //Get stored sessions

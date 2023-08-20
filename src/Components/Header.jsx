@@ -9,9 +9,9 @@ import { deleteSession } from "../SQLite";
 
 const Header = ({ route, navigation }) => {
     let title;
-    if (route.name === "Home") title = "Home";
+    if (route.name === "Home") title = "Bonsai Ecommerce";
     else if (route.name === "ItemListCategory") title = route.params.category;
-    else if (route.name === "Detail") title = route.params.title;
+    else if (route.name === "ItemDetail") title = route.params.item.title;
     else title = route.name;
 
     const dispatch = useDispatch();
