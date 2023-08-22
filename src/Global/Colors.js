@@ -1,6 +1,6 @@
 export const colors = {
-    red: "#FF6666",
-    peach: "#FF8989",
-    pink: "#FCAEAE",
+    red: "#41867c",
+    peach: "#ca221f",
+    pink: "#302325", 
     lightPink: "#FFEADD"
 }

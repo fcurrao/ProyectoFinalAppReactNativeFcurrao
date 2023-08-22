@@ -7,18 +7,20 @@ import { useSelector } from "react-redux";
 
 const OrderScreen = () => {
   const {items : CartData} = useSelector(state => state.orderReducer.value)
-console.warn( CartData);
+  const infoData = CartData
+console.warn("cardata desde ordenscreen", infoData);
+console.warn("cardata desde ordenscreen", infoData.CartData);
   return (
     <View> 
         <FlatList
             data={CartData}
             keyExtractor={orderItem => orderItem.id}
             renderItem={({
-              item
+              infoData
             }) => {
                 return (
                     <OrderItem 
-                      order={item}
+                      order={CartData}
                     />
                 )
             }}

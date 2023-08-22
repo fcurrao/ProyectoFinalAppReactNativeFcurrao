@@ -49,6 +49,7 @@ const ImageSelector = ({ navigation }) => {
     };
 
     const confirmImage = async () => {
+        alert("foto cambiada")
         // SI ES EN WEB, PARA PROBAR, DEJO ESTAS DOS LINEAS Y COMENTO TODO EL TRY ,CATCH
         // dispatch(saveImage(image))
         // navigation.goBack()

@@ -1,4 +1,4 @@
-import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native'
+import { FlatList, Pressable, Button, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import CartItem from '../Components/CartItem';
 import { useSelector } from 'react-redux';
@@ -23,7 +23,7 @@ const Cart = () => {
                 dispatch(addOrder({
                     CartData
                 })) 
-                // dispatch(removeCartItem({ })) 
+                dispatch(removeCartItem({ })) 
 
 
     }
@@ -31,8 +31,12 @@ const Cart = () => {
     console.log(result);
 
     return (
-    <View style={styles.container}>
-        <FlatList
+    <View style={styles.container}> 
+    {console.warn("TOTAL", total)}
+           {total == null || total == 0  ? (
+            <></>
+           ) : (<>
+             <FlatList
             data={CartData}
             keyExtractor={cartItem => cartItem.id}
             renderItem={({item})=> {
@@ -43,16 +47,16 @@ const Cart = () => {
                 )
             }}
         />
-        <View style={styles.totalContainer}>
-            <Pressable
-                onPress = {onConfirm}
-            >
-                <Text>
-                    Confirm
-                </Text>
-            </Pressable>
+        <View style={styles.totalContainer}> 
+                <Button title="Confirm"
+                          onPress={onConfirm}
+                      ></Button>
+          
             <Text>Total: ${total}</Text>
         </View>
+           </>)
+       } 
+     
     </View>
   )
 }

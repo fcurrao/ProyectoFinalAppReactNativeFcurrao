@@ -21,6 +21,7 @@ const LocationSelector = ({ navigation }) => {
     const dispatch = useDispatch(); 
 
     const onConfirmAddress = () => {
+        alert("Direccion cambiada")
          const locationFormatted = {
             latitude: location.latitude,
             longitude: location.longitude,

@@ -12,13 +12,9 @@ const OrderItem = ({ order }) => {
     const {items : CartData} = useSelector(state => state.orderReducer.value)
     console.warn(" xdxdx ",useSelector(state => state.orderReducer.value.items));
     const nOrder = Math.floor(Math.random() * 1000000)
-    console.warn("1",nOrder);
-    console.warn("2",order);
     let  currentOrders = []
     if ( useSelector(state => state.orderReducer.value.items.length !== 0) ){
      currentOrders = CartData[0].CartData
-    console.warn("3",CartData);
-    console.warn("3",CartData[0].CartData[0].title)
 
     } else {currentOrders = []} 
     console.warn("34",currentOrders);
@@ -38,17 +34,36 @@ const OrderItem = ({ order }) => {
 
     return (
         <View style={styles.card} onPress={() => {}}>
-               {currentOrders.map(cO=> 
+            
+             
+            
+               {order.map(eachOrder=> 
+            //    {let i++ }
                <View style={styles.textContainer}>
+
+
                 <Text style={styles.text2}>Order number {nOrder}</Text>
              
-                    
-                <Text style={styles.text2}>Productos {cO.title}</Text>
+                {/* {eachOrder.map(eO=>  
+                <> */}
+<Text style={styles.text2}>Productos  </Text>
+                {eachOrder.CartData.map(eO=>  
+                <>
+                {console.warn("PROBANDO", eO)} 
+                <Text> {eO.title} </Text> 
+                </>
+                  )}
+                {console.warn("PROBANDO", eachOrder)} 
+                {console.warn("PROBANDO 1 ", eachOrder.CartData)} 
+                {console.warn("PROBANDO 2 ", eachOrder.CartData[0])} 
+              
+                  
                 
                 <Text style={styles.text}>
-                    {new Date(cO.createdAt).toLocaleString()}
-                </Text>
-
+                    {new Date(eachOrder.CartData.createdAt).toLocaleString()}
+                </Text>  
+                {/* </> */}
+                
 
                 <Text style={styles.text2}>${total}</Text>
             </View>
@@ -62,7 +77,7 @@ export default OrderItem;
 
 const styles = StyleSheet.create({
     card: {
-        height: 100,
+        height: 250,
         backgroundColor: colors.peach,
         padding: 10,
         margin: 10,
