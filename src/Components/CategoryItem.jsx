@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     },
     additionalStyle: {
       borderRadius: 15,
-    height: '120px !important'
+    height: '120px'
     }
 })
 

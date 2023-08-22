@@ -1,22 +1,58 @@
 import { StyleSheet, Text, View } from "react-native";
-import { Feather } from "@expo/vector-icons";
-import React from "react";
+import { Feather } from "@expo/vector-icons"; 
 import { colors } from "../Global/Colors";
+import { useSelector } from "react-redux";
+import React, { useState } from "react";
+
+
 
 const OrderItem = ({ order }) => {
-    const total = order.items.reduce(
+
+    // alert("TENGO Q TRAERME DE ORDERJ.JS LAS ORDENES Y REMPLAZARLA POR CART DATA")
+    const {items : CartData} = useSelector(state => state.orderReducer.value)
+    console.warn(" xdxdx ",useSelector(state => state.orderReducer.value.items));
+    const nOrder = Math.floor(Math.random() * 1000000)
+    console.warn("1",nOrder);
+    console.warn("2",order);
+    let  currentOrders = []
+    if ( useSelector(state => state.orderReducer.value.items.length !== 0) ){
+     currentOrders = CartData[0].CartData
+    console.warn("3",CartData);
+    console.warn("3",CartData[0].CartData[0].title)
+
+    } else {currentOrders = []} 
+    console.warn("34",currentOrders);
+    // const total = 10;
+    const total = currentOrders.reduce(
         (acc, currentItem) => (acc += currentItem.price * currentItem.quantity),
         0
     );
 
+    
+    // const [total2,setTotal2] = useState()
+    //   CartData.map(x => 
+    //     setTotal2(x.quantity * x.price)
+    // );
+    // console.warn("xd", total2);
+
+
     return (
         <View style={styles.card} onPress={() => {}}>
-            <View style={styles.textContainer}>
+               {currentOrders.map(cO=> 
+               <View style={styles.textContainer}>
+                <Text style={styles.text2}>Order number {nOrder}</Text>
+             
+                    
+                <Text style={styles.text2}>Productos {cO.title}</Text>
+                
                 <Text style={styles.text}>
-                    {new Date(order.createdAt).toLocaleString()}
+                    {new Date(cO.createdAt).toLocaleString()}
                 </Text>
+
+
                 <Text style={styles.text2}>${total}</Text>
             </View>
+            )}
             <Feather name="search" size={30} color="black" />
         </View>
     );

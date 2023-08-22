@@ -3,13 +3,19 @@ import React from 'react'
 import OrderData from '../Data/orders.json'
 import OrderItem from '../Components/OrdenItem'
 
+import { useSelector } from "react-redux";
+
 const OrderScreen = () => {
+  const {items : CartData} = useSelector(state => state.orderReducer.value)
+console.warn( CartData);
   return (
-    <View>
+    <View> 
         <FlatList
-            data={OrderData}
+            data={CartData}
             keyExtractor={orderItem => orderItem.id}
-            renderItem={({item}) => {
+            renderItem={({
+              item
+            }) => {
                 return (
                     <OrderItem 
                       order={item}

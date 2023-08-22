@@ -6,6 +6,7 @@ import { usePostCartMutation } from '../Services/shopServices';
 import Home from './Home';
 import { useDispatch } from "react-redux";
 import { removeCartItem } from "../features/Cart/cartSlice";
+import { addOrder } from "../features/Orders/orders";
 
 
 const Cart = () => {
@@ -17,7 +18,14 @@ const Cart = () => {
     const onConfirm = () => {
         triggerPostCart({items: CartData, total, user, updatedAt})
         alert("ORDEN CONFIRMADA- GRACIAS POR COMPRAR") 
-        dispatch(removeCartItem({ })) 
+        
+                console.warn("ORDENES ?", CartData);
+                dispatch(addOrder({
+                    CartData
+                })) 
+                // dispatch(removeCartItem({ })) 
+
+
     }
 
     console.log(result);
