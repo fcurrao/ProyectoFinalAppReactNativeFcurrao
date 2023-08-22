@@ -6,84 +6,81 @@ import React, { useState } from "react";
 
 
 
-const OrderItem = ({ order }) => {
+const OrderItem = ({ order,totalorder, numberOrder , updatedAt }) => {
 
-    // alert("TENGO Q TRAERME DE ORDERJ.JS LAS ORDENES Y REMPLAZARLA POR CART DATA")
-    const {items : CartData} = useSelector(state => state.orderReducer.value)
-    console.warn(" xdxdx ",useSelector(state => state.orderReducer.value.items));
-    const nOrder = Math.floor(Math.random() * 1000000)
+    // alert("TENGO Q TRAERME DE ORDERJ.JS LAS ORDENES Y REMPLAZARLA POR CART DATA")  
+    console.warn(" xdxdx ",useSelector(state => state.orderReducer.value.updatedAt));
+    console.warn(" xxxxxxxxxxxxxxxxx ",order); 
+    console.warn(" xxxxxxxxxxxxxxxxx ",totalorder); 
+    console.warn(" xxxxxxxxxxxxxxxxx ",numberOrder); 
+    console.warn(" xxxxxxxxxxxxxxxxx ",updatedAt); 
     let  currentOrders = []
-    if ( useSelector(state => state.orderReducer.value.items.length !== 0) ){
-     currentOrders = CartData[0].CartData
+    // if ( useSelector(state => state.orderReducer.value.items.length !== 0) ){
+    //  currentOrders = CartData[0].CartData
 
-    } else {currentOrders = []} 
-    console.warn("34",currentOrders);
+    // } else {currentOrders = []} 
+    // console.warn("34",currentOrders);
     // const total = 10;
-    const total = currentOrders.reduce(
-        (acc, currentItem) => (acc += currentItem.price * currentItem.quantity),
-        0
-    );
-
-    
-    // const [total2,setTotal2] = useState()
-    //   CartData.map(x => 
-    //     setTotal2(x.quantity * x.price)
+    // const total2 = currentOrders.reduce(
+    //     (acc, currentItem) => (acc += currentItem.price * currentItem.quantity),
+    //     0
     // );
-    // console.warn("xd", total2);
-
+    numberOrder = []
+    let numRandon = Math.floor(Math.random() * 1000000)
+    let aaaaaaaaaa = numberOrder.push(numRandon)
+    console.warn("PPPPPPPPPPPPP", aaaaaaaaaa);
+    console.warn("PPPPPPPPPPPPP2    ", numberOrder);
 
     return (
-        <View style={styles.card} onPress={() => {}}>
-            
-             
-            
-               {order.map(eachOrder=> 
-            //    {let i++ }
-               <View style={styles.textContainer}>
-
-
-                <Text style={styles.text2}>Order number {nOrder}</Text>
-             
-                {/* {eachOrder.map(eO=>  
-                <> */}
-<Text style={styles.text2}>Productos  </Text>
-                {eachOrder.CartData.map(eO=>  
+<> 
+<View > 
+        {order.map(eachOrder=> <> 
+<View  style={styles.card} onPress={() => {}}>
+            <Text style={styles.text2}>  Fecha:{eachOrder.updatedAt}</Text>
+            {eachOrder.CartData.map(eO=>  
                 <>
-                {console.warn("PROBANDO", eO)} 
-                <Text> {eO.title} </Text> 
+                 <View style={styles.card2} onPress={() => {}}>
+                  <Text style={styles.text1}> {eO.title} |  ${eO.price} - {eO.quantity}units = ${eO.price*eO.quantity} </Text> 
+                
+                 </View>
                 </>
-                  )}
-                {console.warn("PROBANDO", eachOrder)} 
-                {console.warn("PROBANDO 1 ", eachOrder.CartData)} 
-                {console.warn("PROBANDO 2 ", eachOrder.CartData[0])} 
-              
-                  
-                
-                <Text style={styles.text}>
-                    {new Date(eachOrder.CartData.createdAt).toLocaleString()}
-                </Text>  
-                {/* </> */}
-                
+                )}
+                {/* <Text style={styles.text2}> total de esta orden${total}</Text> */}
+                <Text style={styles.text2}> total de esta orden${eachOrder.total}</Text>
+                <Text style={styles.text3}> ----------------------------------</Text>
+              </View>   
+                </>
+                )}
+              </View>
+              </>  
+              );
+            };
+       
 
-                <Text style={styles.text2}>${total}</Text>
-            </View>
-            )}
-            <Feather name="search" size={30} color="black" />
-        </View>
-    );
-};
 
 export default OrderItem;
 
 const styles = StyleSheet.create({
     card: {
-        height: 250,
+        height: "min-content",
+        display: "flex",
+        flexDirection: "column",
         backgroundColor: colors.peach,
         padding: 10,
         margin: 10,
         borderWidth: 2,
+        borderRadius: 10, 
+        justifyContent: "space-between",
+        alignItems: "center",  
+    },
+    card2: {
+        height: "min-content",
+        backgroundColor: "white",
+        padding: 10,
+        margin: 10,
+        borderWidth: 2,
         borderRadius: 10,
-        flexDirection: "row",
+        flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "center",
     },
@@ -98,10 +95,16 @@ const styles = StyleSheet.create({
         fontSize: 17,
         color: "black",
     },
+    text1: { 
+    },
     text2: {
         fontFamily: "Josefin",
         fontSize: 19,
-        color: "gray",
+        color: "gray", 
+    },
+    text3: { 
+        fontSize: 20,
+        color: "black", 
     },
 });
 

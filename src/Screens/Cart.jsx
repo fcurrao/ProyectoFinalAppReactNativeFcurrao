@@ -21,7 +21,7 @@ const Cart = () => {
         
                 console.warn("ORDENES ?", CartData);
                 dispatch(addOrder({
-                    CartData
+                    CartData , total , updatedAt
                 })) 
                 dispatch(removeCartItem({ })) 
 
