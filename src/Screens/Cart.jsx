@@ -14,15 +14,16 @@ const Cart = () => {
     const [triggerPostCart, result] = usePostCartMutation()
 
     const dispatch = useDispatch()
-
+    let numberOrder =  Math.floor(Math.random() * 1000000);
     const onConfirm = () => {
         triggerPostCart({items: CartData, total, user, updatedAt})
         alert("ORDEN CONFIRMADA- GRACIAS POR COMPRAR") 
         
                 console.warn("ORDENES ?", CartData);
                 dispatch(addOrder({
-                    CartData , total , updatedAt
+                    CartData , total , numberOrder, updatedAt
                 })) 
+
                 dispatch(removeCartItem({ })) 
 
 
@@ -31,8 +32,7 @@ const Cart = () => {
     console.log(result);
 
     return (
-    <View style={styles.container}> 
-    {console.warn("TOTAL", total)}
+    <View style={styles.container}>  
            {total == null || total == 0  ? (
             <></>
            ) : (<>

@@ -1,57 +1,65 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, FlatList,Text, View } from "react-native";
 import { Feather } from "@expo/vector-icons"; 
 import { colors } from "../Global/Colors";
 import { useSelector } from "react-redux";
 import React, { useState } from "react";
+import OrdenItemDetail from "./OrdenItemDetail";
 
 
 
-const OrderItem = ({ order,totalorder, numberOrder , updatedAt }) => {
+const OrderItem = ({ order}) => {
 
     // alert("TENGO Q TRAERME DE ORDERJ.JS LAS ORDENES Y REMPLAZARLA POR CART DATA")  
-    console.warn(" xdxdx ",useSelector(state => state.orderReducer.value.updatedAt));
-    console.warn(" xxxxxxxxxxxxxxxxx ",order); 
-    console.warn(" xxxxxxxxxxxxxxxxx ",totalorder); 
-    console.warn(" xxxxxxxxxxxxxxxxx ",numberOrder); 
-    console.warn(" xxxxxxxxxxxxxxxxx ",updatedAt); 
-    let  currentOrders = []
-    // if ( useSelector(state => state.orderReducer.value.items.length !== 0) ){
-    //  currentOrders = CartData[0].CartData
+    // console.warn(" xdxdx ",useSelector(state => state.orderReducer.value.updatedAt));
+    // console.warn(" xxxxxxxxxxxxxxxxx ",order); 
+    // console.warn(" xxxxxxxxxxxxxxxxx ",totalorder); 
+    // console.warn(" xxxxxxxxxxxxxxxxx ",numberOrder); 
+    // console.warn(" xxxxxxxxxxxxxxxxx ",updatedAt); 
+    // let  currentOrders = []
+    // // if ( useSelector(state => state.orderReducer.value.items.length !== 0) ){
+    // //  currentOrders = CartData[0].CartData
 
-    // } else {currentOrders = []} 
-    // console.warn("34",currentOrders);
-    // const total = 10;
-    // const total2 = currentOrders.reduce(
-    //     (acc, currentItem) => (acc += currentItem.price * currentItem.quantity),
-    //     0
-    // );
-    numberOrder = []
-    let numRandon = Math.floor(Math.random() * 1000000)
-    let aaaaaaaaaa = numberOrder.push(numRandon)
-    console.warn("PPPPPPPPPPPPP", aaaaaaaaaa);
-    console.warn("PPPPPPPPPPPPP2    ", numberOrder);
+    // // } else {currentOrders = []} 
+    // // console.warn("34",currentOrders);
+    // // const total = 10;
+    // // const total2 = currentOrders.reduce(
+    // //     (acc, currentItem) => (acc += currentItem.price * currentItem.quantity),
+    // //     0
+    // // );
+    // numberOrder = [] 
+    // let aaaaaaaaaa = numberOrder.push(numRandon)
+    console.warn("PPPPPPPPPPPPP ====", order);
+
+
+   
 
     return (
 <> 
-<View > 
-        {order.map(eachOrder=> <> 
-<View  style={styles.card} onPress={() => {}}>
-            <Text style={styles.text2}>  Fecha:{eachOrder.updatedAt}</Text>
-            {eachOrder.CartData.map(eO=>  
-                <>
-                 <View style={styles.card2} onPress={() => {}}>
-                  <Text style={styles.text1}> {eO.title} |  ${eO.price} - {eO.quantity}units = ${eO.price*eO.quantity} </Text> 
-                
-                 </View>
-                </>
-                )}
-                {/* <Text style={styles.text2}> total de esta orden${total}</Text> */}
-                <Text style={styles.text2}> total de esta orden${eachOrder.total}</Text>
-                <Text style={styles.text3}> ----------------------------------</Text>
-              </View>   
-                </>
-                )}
-              </View>
+
+<View style={styles.container}>  
+{order.map(eachOrder=> <>  
+<View   style={styles.card} > 
+<Text   style={styles.text4}>  Numero orden:{eachOrder.numberOrder}</Text> 
+<Text   style={styles.text4}>  Fecha:{eachOrder.updatedAt}</Text> 
+<FlatList 
+    data={eachOrder.CartData}
+    keyExtractor={item => item.id}
+    renderItem={({item}) => 
+    <>
+    <OrdenItemDetail  id={item.id} title={item.title} price={item.price} quantity={item.quantity} subTotal={item.quantity*item.price} />
+    </>
+
+}
+  />
+ 
+
+   <Text   style={styles.text4}>  Total orden:{eachOrder.total}</Text>
+   </View>
+  </>
+  )} 
+     </View>
+ 
+
               </>  
               );
             };
@@ -61,6 +69,10 @@ const OrderItem = ({ order,totalorder, numberOrder , updatedAt }) => {
 export default OrderItem;
 
 const styles = StyleSheet.create({
+    container: {
+        justifyContent: 'space-between',
+        flex: 1,
+    },
     card: {
         height: "min-content",
         display: "flex",
@@ -96,6 +108,9 @@ const styles = StyleSheet.create({
         color: "black",
     },
     text1: { 
+        fontFamily: "Josefin",
+        fontSize: 22,
+        color: "gray", 
     },
     text2: {
         fontFamily: "Josefin",
@@ -105,6 +120,11 @@ const styles = StyleSheet.create({
     text3: { 
         fontSize: 20,
         color: "black", 
+    },
+    text4: { 
+        fontFamily: "Josefin",
+        fontSize: 22,
+        color: "white",  
     },
 });
 

@@ -22,7 +22,7 @@ const OrderStack = () => {
             })}
         >
 
-        <Stack.Screen
+        <Stack.Screen 
             name='OrderScreen'
             component={OrderScreen}
         />
@@ -33,4 +33,4 @@ const OrderStack = () => {
 
 export default OrderStack
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({ })
