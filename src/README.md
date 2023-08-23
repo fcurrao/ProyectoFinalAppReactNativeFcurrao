@@ -6,6 +6,8 @@ Este proyecto es un ecomerce para el curso de APP de coderhouse:  El objetivo es
 
 El proyecto  es una implementación de una ecomerce mobile, donde se puede comprar productos y gnerar ordenes, tambien se utilizo la camara del celular , el gps y otras features
 
+Obviamente todo, tanto usuario, productos, como ordenes van a una base de datos manejada en Firebase
+
 ## Contenido
 
 El proyecto contiene los siguientes elementos principales:
@@ -27,7 +29,7 @@ npm install
 
 
 3. **Ejecutar la aplicación:**
-npm start
+npm start 
 
 
 ## Librerías utilizadas
