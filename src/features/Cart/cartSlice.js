@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";  
+import { createSlice } from "@reduxjs/toolkit";
 
 export const cartSlice = createSlice({
     name: "Cart",
@@ -13,9 +13,8 @@ export const cartSlice = createSlice({
     reducers: {
         addCartItem: (state, action) => {
             const productExists = state.value.items.some(item => item.id === action.payload.id)
- 
-            console.warn("=========" , state.value.items);
-            console.warn("=========" , action.payload );
+
+
             if (productExists) {
                 state.value.items = state.value.items.map(item => {
                     if (item.id === action.payload.id) {
@@ -33,38 +32,38 @@ export const cartSlice = createSlice({
 
             state.value.updatedAt = new Date().toLocaleString()
         },
-        removeCartItem: (state,action) => {
-            state.value = {user: "Hardcoder user",
-            updatedAt: "",
-            total: null,
-            items: []}
-         
+        removeCartItem: (state, action) => {
+            state.value = {
+                user: "Hardcoder user",
+                updatedAt: "",
+                total: null,
+                items: []
+            }
+
         },
-        removeOneCartItem: (state,action) => {
+        removeOneCartItem: (state, action) => {
 
             const productExists = state.value.items.some(item => item.id === action.payload.cartItem.id)
             const findex = state.value.items.findIndex(item => item.id === action.payload.cartItem.id)
-            
-            console.warn(" state.value.items",  state.value.items);
-            console.warn("action.payload.cartItem", action.payload.cartItem);
-            
-            
-            if (productExists &&  action.payload.cartItem.quantity>1) { 
-                state.value.items[findex].quantity = state.value.items[findex].quantity -1 
-           
+
+
+
+            if (productExists && action.payload.cartItem.quantity > 1) {
+                state.value.items[findex].quantity = state.value.items[findex].quantity - 1
+
             } else {
-                state.value.items.splice(findex,1)
+                state.value.items.splice(findex, 1)
             }
-           
+
             state.value.total = state.value.total - action.payload.cartItem.price
-            
-           
-         
+
+
+
         }
     }
 })
 
-export const {addCartItem, removeOneCartItem, removeCartItem} = cartSlice.actions
+export const { addCartItem, removeOneCartItem, removeCartItem } = cartSlice.actions
 
 export default cartSlice.reducer
 

@@ -18,7 +18,6 @@ const Cart = () => {
         triggerPostCart({items: CartData, total, user, numberOrder,updatedAt})
         alert("ORDEN CONFIRMADA- GRACIAS POR COMPRAR") 
         
-                console.warn("ORDENES ?", CartData);
                 dispatch(addOrder({
                     CartData , total , numberOrder, updatedAt
                 })) 
