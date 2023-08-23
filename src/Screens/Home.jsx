@@ -1,13 +1,10 @@
 import { FlatList, StyleSheet, Text, Image, Platform, View, useWindowDimensions } from 'react-native'
 import React from 'react'
 import { colors } from '../Global/Colors'
-// import categories from '../Data/categories.json'
 import { useGetCategoriesQuery } from '../Services/shopServices'
-import CategoryItem from '../Components/CategoryItem' 
-import Counter from '../Components/Counter' 
+import CategoryItem from '../Components/CategoryItem'  
 
 const Home = ({
-    // setCategorySelected
     navigation, route
 }) => {
   
@@ -37,7 +34,6 @@ const Home = ({
            style={styles.flatlist}
         /> 
         <Image
-        // resizeMode='cover'
         style={styles.image}
         source={{ uri: 'https://mecaluxes.cdnwm.com/blog/img/almacen-transito-leroy-merlin-guadalajara-bricolaje-jardineria.1.0.jpg' }}
       /> 

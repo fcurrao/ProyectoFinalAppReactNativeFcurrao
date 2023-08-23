@@ -1,6 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import OrderData from '../Data/orders.json'
+import React from 'react' 
 import OrderItem from '../Components/OrdenItem'  
 
 import { useSelector } from "react-redux";
@@ -34,19 +33,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexDirection: "column",
     overflowX: "hidden",
-    // flex: 1 1 0%,
-    // overflow-y: auto,
-    //   transform: translateZ(0px),
-    //  overflowY: auto, 
-    //   //  overflow-y: auto,
-    //   flex
-    //    flex-shrink: 1,
-    
-    //    flex-grow: 1,
-    
-    //    flex-direction: column,
-    
-    //    overflow-x: hidden,
   }
 })
  

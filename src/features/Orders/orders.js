@@ -28,7 +28,6 @@ export const OrderSlice = createSlice({
             updatedAt: "",
             total: null,
             items: []}
-            //Logic to remove item
          
         }
     }
